@@ -6,10 +6,7 @@ let appFooter = `
             <div class="col-sm-6">
               <div class="copyright_text text-center">
                 <p class="wow fadeInRight" data-wow-duration="1s">
-                  Made with <i class="fa fa-heart"></i> by
-                  <a target="_blank" href="https://bootstrapthemes.co"
-                    >Bootstrap Themes</a
-                  >2016. All Rights Reserved
+                  Footer left
                 </p>
               </div>
             </div>
@@ -17,11 +14,7 @@ let appFooter = `
             <div class="col-sm-6">
               <div class="copyright_text text-center">
                 <p class="wow fadeInRight" data-wow-duration="1s">
-                  Distributed <i class="fa fa-heart"></i>
-                  by
-                  <a target="_blank" href="https://themewagon.com/"
-                    >Themewagon</a
-                  >2016. All Rights Reserved
+                  Footer right
                 </p>
               </div>
             </div>
