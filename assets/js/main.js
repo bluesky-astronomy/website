@@ -1,155 +1,185 @@
-"use strict";
+/*
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+*/
 
+(function($) {
 
-jQuery(document).ready(function ($) {
+	var	$window = $(window),
+		$body = $('body');
 
-    jQuery(window).load(function () {
-        jQuery(".loaded").fadeOut();
-        jQuery(".preloader").delay(1000).fadeOut("slow");
-    });
-    /*---------------------------------------------*
-     * Mobile menu
-     ---------------------------------------------*/
-    $(document).on('click', '.navbar-collapse.in', function (e) {
-        if ($(e.target).is('a')) {
-            $(this).collapse('hide');
-        }
-    });
+	// Breakpoints.
+		breakpoints({
+			xlarge:   [ '1281px',  '1680px' ],
+			large:    [ '981px',   '1280px' ],
+			medium:   [ '737px',   '980px'  ],
+			small:    [ '481px',   '736px'  ],
+			xsmall:   [ '361px',   '480px'  ],
+			xxsmall:  [ null,      '360px'  ]
+		});
 
-    $('ul.navbar-nav li').hover(function () {
-        $(this).children('ul').stop(true, false, true).fadeToggle(300);
-    });
-    /*---------------------------------------------*
-     * STICKY scroll
-     ---------------------------------------------*/
+	// Play initial animations on page load.
+		$window.on('load', function() {
+			window.setTimeout(function() {
+				$body.removeClass('is-preload');
+			}, 100);
+		});
 
-    $("").localScroll();
+	// Touch?
+		if (browser.mobile)
+			$body.addClass('is-touch');
 
-    /*---------------------------------------------*
-     * WOW
-     ---------------------------------------------*/
+	// Forms.
+		var $form = $('form');
 
-    var wow = new WOW({
-        mobile: false // trigger animations on mobile devices (default is true)
-    });
-    wow.init();
+		// Auto-resizing textareas.
+			$form.find('textarea').each(function() {
 
+				var $this = $(this),
+					$wrapper = $('<div class="textarea-wrapper"></div>'),
+					$submits = $this.find('input[type="submit"]');
 
-    /*---------------------------------------------*
-     * Counter 
-     ---------------------------------------------*/
+				$this
+					.wrap($wrapper)
+					.attr('rows', 1)
+					.css('overflow', 'hidden')
+					.css('resize', 'none')
+					.on('keydown', function(event) {
 
-    $('.statistic-counter').counterUp({
-        delay: 10,
-        time: 2000
-    });
+						if (event.keyCode == 13
+						&&	event.ctrlKey) {
 
+							event.preventDefault();
+							event.stopPropagation();
 
+							$(this).blur();
 
-    /* ---------------------------------------------------------------------
-     Carousel
-     ---------------------------------------------------------------------= */
+						}
 
-    $('.main_home_slider').owlCarousel({
-        responsiveClass: true,
-        autoplay: false,
-        items: 1,
-        loop: true,
-        dots: true,
-        nav: false,
-        navText: [
-            "<i class='lnr lnr-chevron-left'></i>",
-            "<i class='lnr lnr-chevron-right'></i>"
-        ],
-        autoplayHoverPause: true
+					})
+					.on('blur focus', function() {
+						$this.val($.trim($this.val()));
+					})
+					.on('input blur focus --init', function() {
 
-    });
+						$wrapper
+							.css('height', $this.height());
 
-    $('.main_team').owlCarousel({
-        responsiveClass: true,
-        autoplay: false,
-        items: 1,
-        loop: true,
-        dots: true,
-        nav: true,
-        navText: [
-            "<i class='lnr lnr-chevron-left'></i>",
-            "<i class='lnr lnr-chevron-right'></i>"
-        ],
-        autoplayHoverPause: true
+						$this
+							.css('height', 'auto')
+							.css('height', $this.prop('scrollHeight') + 'px');
 
-    });
+					})
+					.on('keyup', function(event) {
 
-    $('.main_work1_content').owlCarousel({
-        responsiveClass: true,
-        autoplay: false,
-        items: 1,
-        loop: true,
-        dots: true,
-        nav: true,
-        navText: [
-            "prew",
-            "next"
-        ],
-        autoplayHoverPause: true
+						if (event.keyCode == 9)
+							$this
+								.select();
 
-    });
-    $('.main_work1_team').owlCarousel({
-        responsiveClass: true,
-        autoplay: false,
-        items: 1,
-        loop: true,
-        dots: true,
-        nav: false,
-        navText: [
-            "prew",
-            "next"
-        ],
-        autoplayHoverPause: true
+					})
+					.triggerHandler('--init');
 
-    });
+				// Fix.
+					if (browser.name == 'ie'
+					||	browser.mobile)
+						$this
+							.css('max-height', '10em')
+							.css('overflow-y', 'auto');
 
+			});
 
-// main-menu-scroll
+	// Menu.
+		var $menu = $('#menu');
 
-    jQuery(window).scroll(function () {
-        var top = jQuery(document).scrollTop();
-        var height = 5;
-        //alert(batas);
+		$menu.wrapInner('<div class="inner"></div>');
 
-        if (top > height) {
-            jQuery('.navbar-fixed-top').addClass('menu-scroll');
-        } else {
-            jQuery('.navbar-fixed-top').removeClass('menu-scroll');
-        }
-    });
+		$menu._locked = false;
 
-// scroll Up
+		$menu._lock = function() {
 
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 600) {
-            $('.scrollup').fadeIn('slow');
-        } else {
-            $('.scrollup').fadeOut('slow');
-        }
-    });
+			if ($menu._locked)
+				return false;
 
-    $('.scrollup').click(function () {
-        $("html, body").animate({scrollTop: 0}, 1000);
-        return false;
-    });
+			$menu._locked = true;
 
-    $('.main_mix_content').imagesLoaded(function () {
-        // images have loaded
-    });
+			window.setTimeout(function() {
+				$menu._locked = false;
+			}, 350);
 
+			return true;
 
-    //End
-});
+		};
 
+		$menu._show = function() {
 
+			if ($menu._lock())
+				$body.addClass('is-menu-visible');
 
+		};
 
+		$menu._hide = function() {
 
+			if ($menu._lock())
+				$body.removeClass('is-menu-visible');
 
+		};
 
+		$menu._toggle = function() {
+
+			if ($menu._lock())
+				$body.toggleClass('is-menu-visible');
+
+		};
+
+		$menu
+			.appendTo($body)
+			.on('click', function(event) {
+				event.stopPropagation();
+			})
+			.on('click', 'a', function(event) {
+
+				var href = $(this).attr('href');
+
+				event.preventDefault();
+				event.stopPropagation();
+
+				// Hide.
+					$menu._hide();
+
+				// Redirect.
+					if (href == '#menu')
+						return;
+
+					window.setTimeout(function() {
+						window.location.href = href;
+					}, 350);
+
+			})
+			.append('<a class="close" href="#menu">Close</a>');
+
+		$body
+			.on('click', 'a[href="#menu"]', function(event) {
+
+				event.stopPropagation();
+				event.preventDefault();
+
+				// Toggle.
+					$menu._toggle();
+
+			})
+			.on('click', function(event) {
+
+				// Hide.
+					$menu._hide();
+
+			})
+			.on('keydown', function(event) {
+
+				// Hide on escape.
+					if (event.keyCode == 27)
+						$menu._hide();
+
+			});
+
+})(jQuery);
