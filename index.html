@@ -66,7 +66,7 @@
           <h2>Feeds</h2>
           <p>
             Anyone can host algorithms that show feeds of posts. We maintain feeds for
-            astronomy topics, like these ones:
+            astronomy topics, like this one:
           </p>
           <h3>
             <a
@@ -74,7 +74,28 @@
               >Astronomy</a
             >
           </h3>
-          <h3>
+
+          <button
+            title="Show / Hide"
+            type="button"
+			style="font-size: 8pt; margin-top: -20px;"
+            onclick="if(document.getElementById('spoiler') .style.display=='none') {document.getElementById('spoiler') .style.display=''}else{document.getElementById('spoiler') .style.display='none'}"
+          >
+            Show / Hide Posts
+          </button>
+          <div id="spoiler" style="display: none">
+            <bsky-embed
+              feed="at://did:plc:jcoy7v3a2t4rcfdh6i4kza25/app.bsky.feed.generator/astro"
+              mode=""
+              limit="10"
+              link-target="_blank"
+              link-image="false"
+			  custom-styles="p {font-size: 0.9em}"
+            >
+            </bsky-embed>
+          </div>
+
+          <!-- <h3>
             <a
               href="https://bsky.app/profile/did:plc:jcoy7v3a2t4rcfdh6i4kza25/feed/astro"
               >Astrophotography</a
@@ -85,9 +106,9 @@
               href="https://bsky.app/profile/did:plc:jcoy7v3a2t4rcfdh6i4kza25/feed/astro"
               >Exoplanets</a
             >
-          </h3>
+          </h3> -->
 
-          <h2>Conference dashboards and support</h2>
+          <h2 style="margin-top: 40px">Conference dashboards and support</h2>
           <p>
             Show Bluesky posts live at your conference. Use a dashboard like
             <a href="https://emilyhunt.github.io/dotastronomy-live-feed/">this one</a>
