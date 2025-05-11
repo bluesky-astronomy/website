@@ -1,0 +1,20 @@
+/* All CSS variables used in the project. */
+:root {
+    /* Layout settings */
+    --content-width: min(800px, 90vw);
+
+	/* Custom colours */
+	--color-accent: #6d1574;
+	--color-accent-hover: color-mix(in srgb, var(--color-accent) 80%, #ffffff 20%);
+	--color-grey: #595959;
+    --color-lightgrey: #aaaaaa;
+    --color-offwhite: #f8f8f8;
+    --color-green: #135b0b;
+    --color-purple: #4a0b5b;
+    --color-blue: #0b405b;
+
+    /* Font settings */
+    --font-text: 'Rethink Sans', 'Poppins', 'Sans-Serif';
+    --font-heading: 'Rethink Sans', 'Poppins', 'Sans-Serif';
+    --font-monospace: 'JetBrains Mono', 'Courier New', 'Monospace';
+}
