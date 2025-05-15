@@ -1,26 +1,11 @@
 <script>
-	import { getFeedList } from '$lib/js/flask-api';
+	import { getFeedInfo } from '$lib/js/cache.svelte';
 	import { onMount } from 'svelte';
 
-	let feeds;
+	let feeds = $state(0);
 
 	onMount(async () => {
-		const feedsObject = await getFeedList();
-
-		// TODO a lot of the below should go in getFeedList(), or the backend should change
-		// Assign feed name to object itself for convenience
-		Object.keys(feedsObject).forEach((key) => {
-			// Edge case where some feeds don't come as an object
-			if (feedsObject[key] === null) {
-				feedsObject[key] = new Object();
-				feedsObject[key].emoji = new Array();
-				feedsObject[key].words = ['All posts from all feeds'];
-			}
-			feedsObject[key].feed = key;
-		});
-
-		// Make into array
-		feeds = Object.values(feedsObject);
+		feeds = await getFeedInfo()
 	});
 </script>
 
@@ -35,8 +20,9 @@
 		<a href={`/feeds/${feed.feed}`}>
 			<div class="feed-card">
 				<h3 style="margin-bottom: 10px">{feed.feed}</h3>
+				<!-- {feed.words} -->
 				<p style="color: var(--color-grey); margin-top: 0px">
-					{feed.emoji.concat(feed.words).join(', ')}
+					<!-- {feed.emoji.concat(feed.words).join(', ')} -->
 				</p>
 			</div>
 		</a>
