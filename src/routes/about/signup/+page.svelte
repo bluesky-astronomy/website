@@ -43,10 +43,10 @@
 
 <p style="margin-top: 50px">
 	Within a couple of minutes, our friendly bot should see the post and reply to it with further
-	instructions.
+	instructions:
 </p>
 
-<Image src="/assets/signup/bot-reply.png" style="width: 100%; max-width: 600px;" />
+<Image src="/assets/signup/bot-reply.png" style="width: 100%; max-width: 500px;" />
 
 <p>
 	The bot will ask you to <a href="https://github.com/bluesky-astronomy/rules"
