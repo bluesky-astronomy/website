@@ -1,9 +1,18 @@
 <script>
 	import ImageWithText from '../lib/blocks/ImageWithText.svelte';
+
+	const imageWithTextStyle = 'width: 100%; max-width: 400px';
 </script>
 
-<ImageWithText swap fullHeight>
-	<h1 style="margin-top: 0px; font-size: 40px">Welcome to the future of astronomy discussion.</h1>
+<ImageWithText
+	swap
+	fullHeight
+	src="/assets/bluesky-posts/rubin-variables.png"
+	style={imageWithTextStyle}
+>
+	<h1 style="margin-top: 0px; font-size: 40px">
+		Welcome to the future of outreach and discussion.
+	</h1>
 
 	<p>
 		Social media is an essential part of <strong>outreach</strong> and
@@ -11,11 +20,16 @@
 	</p>
 
 	<p>
-		That's why we're building an open <em>ecosystem</em> of online tools for the space science & astronomy communities.
+		That's why we're building an open <em>ecosystem</em> of online tools for the space science & astronomy
+		communities.
 	</p>
 </ImageWithText>
 
-<ImageWithText fullHeight>
+<ImageWithText
+	fullHeight
+	src="/assets/bluesky-posts/ryan-macdonald-k218b.png"
+	style={imageWithTextStyle}
+>
 	<h1 style="margin-top: 0px; font-size: 40px">Control your scroll.</h1>
 
 	<p>
@@ -30,22 +44,31 @@
 	</p>
 </ImageWithText>
 
-<ImageWithText swap fullHeight>
+<ImageWithText
+	swap
+	fullHeight
+	src="/assets/bluesky-posts/skymapsdotcom-milky-way.png"
+	style={imageWithTextStyle}
+>
 	<h1 style="margin-top: 0px; font-size: 40px">Reach your audience.</h1>
 
 	<p>
-		With around <strong>one million views per week,</strong> we think that our feeds are a <em>fantastic</em> way to reach an audience
-		of astronomers & space enthusiasts.
+		With around <strong>one million views per week,</strong> we think that our feeds are a
+		<em>fantastic</em> way to reach an audience of astronomers & space enthusiasts.
 	</p>
 
 	<p>
-		Join astronomers like <a href="https://bsky.app/profile/astrokatie.com">Katie Mack</a> or
-		organisations like <a href="https://bsky.app/profile/esa.int">the European Space Agency</a> in sharing
-		content with our audience.
+		Join over a thousand astronomers or organisations like <a
+			href="https://bsky.app/profile/esa.int">the European Space Agency</a
+		> in sharing content with our audience.
 	</p>
 </ImageWithText>
 
-<ImageWithText fullHeight>
+<ImageWithText
+	fullHeight
+	src="/assets/bluesky-posts/sky-and-telescope.png"
+	style={imageWithTextStyle}
+>
 	<h1 style="margin-top: 0px; font-size: 40px">
 		Independent.<br />Open source.<br />Free forever.
 	</h1>
@@ -56,7 +79,9 @@
 	</p>
 
 	<p>
-		We're building out our platform so it can be permanent, and working towards <strong>full data autonomy</strong> for our community.
+		We're building out our platform so it can be permanent, and working towards <strong
+			>full data autonomy</strong
+		> for our community.
 	</p>
 </ImageWithText>
 
