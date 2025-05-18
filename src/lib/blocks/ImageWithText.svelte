@@ -11,9 +11,9 @@
 		fullHeight = false
 	} = $props();
 
-	const heightStyle = fullHeight ? 'height: calc(100vh - 160px); min-height: 600px' : '';
+	const heightStyle = fullHeight ? 'min-height: calc(100vh - 200px);' : '';
 	const marginStyle = fullHeight
-		? 'margin-top: 0px; margin-bottom: 0px; padding-bottom: 100px;'
+		? 'margin-top: 60px; margin-bottom: 60px;'
 		: `margin-top: ${margin}; margin-bottom: ${margin};`;
 </script>
 
@@ -81,6 +81,7 @@
 		.flex-image {
 			order: -1;
 			max-width: 80vw !important;
+			margin-bottom: 25px;
 		}
 	}
 </style>
