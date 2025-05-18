@@ -1,13 +1,14 @@
 <script>
 	import { getFeedInfo } from '$lib/js/cache.svelte';
 	import { onMount } from 'svelte';
+	import FeedCard from '$lib/components/feeds/FeedCard.svelte';
 
 	let feeds = undefined;
 	let sortedFeeds = new Array();
 
 	onMount(async () => {
 		feeds = await getFeedInfo();
-		sortedFeeds = feeds.sort((a, b) => b.likeCount - a.likeCount);
+		sortedFeeds = Object.values(feeds).sort((a, b) => b.likeCount - a.likeCount);
 	});
 </script>
 
@@ -19,15 +20,16 @@
 
 {#if sortedFeeds}
 	{#each sortedFeeds as feed}
-		<a href={`/feeds/${feed.feed}`}>
+		<FeedCard feed={feed.feed}/>
+		<!-- <a href={`/feeds/${feed.feed}`}>
 			<div class="feed-card">
 				<h3 style="margin-bottom: 10px">{feed.displayName}</h3>
-				<!-- {feed.words} -->
+				{feed.words}
 				<p style="color: var(--color-grey); margin-top: 0px">
 					{feed.emoji.concat(feed.words)}<br />❤️{feed.likeCount}
 				</p>
 			</div>
-		</a>
+		</a> -->
 	{/each}
 {/if}
 

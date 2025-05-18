@@ -3,7 +3,6 @@
 	import { getFeedInfo } from '$lib/js/cache.svelte';
 	import { onMount } from 'svelte';
 	import Image from '$lib/blocks/Image.svelte';
-	import ImageWithText from '$lib/blocks/ImageWithText.svelte';
 	// import { siteTitle } from '$lib/config.js';
 	// import { formatDate } from '$lib/js/dates';
 	let { data } = $props();
@@ -13,8 +12,8 @@
 
 	onMount(async () => {
 		const allFeedInfo = await getFeedInfo();
-		feedInfo = allFeedInfo.filter((thisFeed) => thisFeed.feed === feed)[0];
-		console.log(feedInfo);
+		feedInfo = allFeedInfo[feed];
+		// console.log(feedInfo);
 	});
 </script>
 

@@ -3,7 +3,7 @@
 import { getActorFeeds } from './bsky-api';
 import { getFeedList } from './flask-api';
 
-let feedInfo = $state([]);
+let feedInfo = $state({});
 
 export async function getFeedInfo() {
 	if (feedInfo.length > 0) {
@@ -26,7 +26,7 @@ export async function getFeedInfo() {
 
 		// Only discuss feeds exported by the Flask server
 		if (flaskInfo[id] !== undefined) {
-			feedInfo.push({ feed: id, ...flaskInfo[id], ...feed });
+			feedInfo[id] = { feed: id, ...flaskInfo[id], ...feed };
 		}
 	});
 
