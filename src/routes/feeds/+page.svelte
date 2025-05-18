@@ -2,10 +2,12 @@
 	import { getFeedInfo } from '$lib/js/cache.svelte';
 	import { onMount } from 'svelte';
 
-	let feeds = $state(0);
+	let feeds = undefined;
+	let sortedFeeds = new Array();
 
 	onMount(async () => {
-		feeds = await getFeedInfo()
+		feeds = await getFeedInfo();
+		sortedFeeds = feeds.sort((a, b) => b.likeCount - a.likeCount);
 	});
 </script>
 
@@ -15,14 +17,14 @@
 
 <p>Click on the links below to find out more.</p>
 
-{#if feeds}
-	{#each feeds as feed}
+{#if sortedFeeds}
+	{#each sortedFeeds as feed}
 		<a href={`/feeds/${feed.feed}`}>
 			<div class="feed-card">
-				<h3 style="margin-bottom: 10px">{feed.feed}</h3>
+				<h3 style="margin-bottom: 10px">{feed.displayName}</h3>
 				<!-- {feed.words} -->
 				<p style="color: var(--color-grey); margin-top: 0px">
-					<!-- {feed.emoji.concat(feed.words).join(', ')} -->
+					{feed.emoji.concat(feed.words)}<br />❤️{feed.likeCount}
 				</p>
 			</div>
 		</a>
