@@ -14,7 +14,7 @@
 
 		<div class="header-item not-on-tablets not-on-phones">
 			<a href="/">
-				<Image style="height: 50px; padding: 0px; margin: 0px;" src="assets/logo.webp" />
+				<Image style="height: 50px; padding: 0px; margin: 0px;" src="/assets/logo.webp" />
 			</a>
 		</div>
 
