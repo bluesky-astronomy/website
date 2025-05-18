@@ -12,5 +12,5 @@
 
 <p>
 	Most of all, we're excited for the future: a future in which science communication and discussion
-	spaces can become safe, stable, and permanent spaces.
+	spaces can become safe, stable, and permanent.
 </p>
