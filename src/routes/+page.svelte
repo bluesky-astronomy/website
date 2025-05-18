@@ -7,13 +7,11 @@
 
 	<p>
 		Social media is an essential part of <strong>outreach</strong> and
-		<strong>discussion.</strong>
-		It's too important to be <strong>vulnerable</strong> to bad actors.
+		<strong>discussion</strong> - too useful to be vulnerable to a rogue billionaire.
 	</p>
 
 	<p>
-		The 2022 takeover of <em>Twitter</em> left the astronomy and planetary science communities
-		<strong>without an online home.</strong>
+		That's why we're building an open <em>ecosystem</em> of online tools for the space science & astronomy communities.
 	</p>
 </ImageWithText>
 
@@ -21,9 +19,9 @@
 	<h1 style="margin-top: 0px; font-size: 40px">Control your scroll.</h1>
 
 	<p>
-		Since July 2023, we've been hosting feeds containing astronomy content on
+		Since July 2023, we've been hosting feeds containing space science content on
 		<a href="https://bsky.app/profile/emily.space/feed/astro">Bluesky</a>. The feeds are
-		<strong>moderated</strong> to be factually accurate and disinformation-free.
+		<strong>moderated</strong> to be disinformation-free.
 	</p>
 
 	<p>
@@ -36,7 +34,7 @@
 	<h1 style="margin-top: 0px; font-size: 40px">Reach your audience.</h1>
 
 	<p>
-		With around <strong>one million views per week,</strong> our feeds are a great way to reach an audience
+		With around <strong>one million views per week,</strong> we think that our feeds are a <em>fantastic</em> way to reach an audience
 		of astronomers & space enthusiasts.
 	</p>
 
@@ -58,14 +56,12 @@
 	</p>
 
 	<p>
-		We're building a billionaire-proof <em>ecosystem</em> of online tools to support space
-		science communities online.
+		We're building out our platform so it can be permanent, and working towards <strong>full data autonomy</strong> for our community.
 	</p>
 </ImageWithText>
-
 
 <h2>Find out more</h2>
 
 <ul>
-    <li><a href="http://localhost:5173/feeds">Check out our feeds</a></li>
+	<li><a href="http://localhost:5173/feeds">Check out our feeds</a></li>
 </ul>
