@@ -4,6 +4,7 @@ import { dev } from '$app/environment';
 
 // Set endpoint - different on dev or not dev
 let flaskEndpoint = 'https://feed-all.astronomy.blue';
+flaskEndpoint = 'http://127.0.0.1:8000';
 if (dev) {
 	flaskEndpoint = 'http://127.0.0.1:8000';
 }

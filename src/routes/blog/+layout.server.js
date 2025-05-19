@@ -31,7 +31,7 @@ function getParametersOrGetDefault(params) {
 }
 
 function deduplicateMixedCasePages(category, page) {
-	const categoryLowerCase = category.toLowerCase();
+	const categoryLowerCase = category.toLowerCase().replaceAll(" ", "-");
 	if (categoryLowerCase !== category) {
 		redirect(301, `/blog/${categoryLowerCase}/${page}`);
 	}
@@ -44,7 +44,7 @@ function deduplicateIndexPages(params) {
 	}
 	// /blog/[category]/{1, 0, -1, ...} -> /blog/[category]
 	if (params.page <= 1) {
-		const categoryLowerCase = params.category.toLowerCase();
+		const categoryLowerCase = params.category.toLowerCase().replaceAll(" ", "-");
 		// SHORTCUT: skip a second redirect if we're also in 'all' cat
 		if (categoryLowerCase === 'all') {
 			redirect(301, '/blog');

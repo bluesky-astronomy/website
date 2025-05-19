@@ -5,7 +5,7 @@ published: true
 # updated: 2024-10-08
 authors: ['Emily Hunt']
 tags: ['News', 'Branding', 'Announcements']
-categories: ['Development news']
+categories: ['development-news']
 description: "We just updated our website!"
 thumbnail: '/assets/posts/250518-new-website/thumbnail.png'
 image: '/assets/posts/250518-new-website/header.png'

@@ -52,7 +52,7 @@
 				{#if i !== 0}
 					,
 				{/if}
-				<a href="/blog/{category.toLowerCase()}">{category}</a>
+				<a href="/blog/{category.toLowerCase()}">{category.replaceAll("-", " ")}</a>
 			{/each}
 		</p>
 		<p class="date">

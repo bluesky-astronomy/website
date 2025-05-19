@@ -14,7 +14,7 @@
 		<div class="red-line"></div>
 		<p style="margin-top: 0px; margin-bottom: 0px;">
 			<span class="category"
-				><a href="/blog/{post.categories[0].toLowerCase()}">{post.categories[0]}</a></span
+				><a href="/blog/{post.categories[0].toLowerCase()}">{post.categories[0].replaceAll("-", " ")}</a></span
 			>
 			<span class="date"> - {formatDate(post.date)}</span>
 		</p>
