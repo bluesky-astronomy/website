@@ -57,7 +57,7 @@
 <h2>Posting</h2>
 
 <p>
-	Once you're signed, you'll be able to post to <strong>any</strong> of the feeds. Of course, please
+	Once you're signed up, you'll be able to post to <strong>any</strong> of the feeds. Of course, please
 	keep posts on-topic to each one of the feeds.
 </p>
 
