@@ -1,7 +1,7 @@
 <!-- svelte-ignore non_reactive_update -->
 <script>
 	import Image from '$lib/blocks/Image.svelte';
-	import { siteTitle } from '$lib/config.js';
+	import { siteTitle, authorSocialLinks } from '$lib/config.js';
 	import { formatDate } from '$lib/js/dates';
 	let { data } = $props();
 
@@ -15,10 +15,23 @@
 			dateInformation += ` | Updated: ${formatDate(metadata.updated)}`;
 		}
 	}
+
+	// Category info
 	let categories = ['Uncategorised'];
 	if (data.metadata.categories) {
 		categories = data.metadata.categories;
 	}
+
+	// Author info
+	let authorInformation = 'Anonymous';
+	let authorLinks = [undefined];
+	if (data.metadata.authors) {
+		authorInformation = data.metadata.authors;
+		authorLinks = authorInformation.map(
+			(author) => authorSocialLinks[author.toLowerCase().replaceAll(' ', '')]
+		);
+	}
+	console.log(authorInformation, authorLinks);
 </script>
 
 <article style="margin-top: 20px">
@@ -31,6 +44,7 @@
 			/>
 		</div>
 	{/if}
+
 	<div class="info">
 		<h1 class="heading">{metadata.title}</h1>
 		<p class="category">
@@ -41,8 +55,21 @@
 				<a href="/blog/{category.toLowerCase()}">{category}</a>
 			{/each}
 		</p>
-		<p class="date">{dateInformation}</p>
+		<p class="date">
+			{#each authorInformation as author, index}
+				{#if index !== 0}
+					,
+				{/if}
+				{#if authorLinks[index]}
+					<a href={authorLinks[index]} target="_blank">{author}</a>
+				{:else}
+					{author}
+				{/if}
+			{/each},
+			{dateInformation}
+		</p>
 	</div>
+
 	{@render data.content()}
 </article>
 

@@ -15,3 +15,10 @@ export const socials = {
 /* BLOG SETTINGS */
 // How many blog posts to have per page
 export const postsPerPage = 8;
+
+
+/* AUTHORS */
+// Social links for authors.
+export const authorSocialLinks = {
+	emilyhunt: "https://bsky.app/profile/did:plc:jcoy7v3a2t4rcfdh6i4kza25"
+}
