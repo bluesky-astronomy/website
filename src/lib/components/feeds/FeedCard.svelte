@@ -51,7 +51,7 @@
 		flex-wrap: nowrap;
 	}
 	.card {
-		min-height: 120px;
+		min-height: 157px;
 		border-bottom: 1px solid var(--color-lightgrey);
 	}
 </style>
