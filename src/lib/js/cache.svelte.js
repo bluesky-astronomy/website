@@ -6,7 +6,7 @@ import { getFeedList } from './flask-api';
 let feedInfo = $state({});
 
 export async function getFeedInfo() {
-	if (feedInfo.length > 0) {
+	if (Object.keys(feedInfo).length > 0) {
 		return feedInfo;
 	}
 
@@ -14,6 +14,7 @@ export async function getFeedInfo() {
 	// Todo: do these in parallel
 	const flaskInfo = await getFeedList();
 	const blueskyInfo = await getActorFeeds();
+	console.log("QUERY")
 
 	// Combine into two arrays & set various data
 	blueskyInfo.data.feeds.forEach((feed) => {
