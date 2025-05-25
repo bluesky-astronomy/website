@@ -28,10 +28,9 @@
 	if (data.metadata.authors) {
 		authorInformation = data.metadata.authors;
 		authorLinks = authorInformation.map(
-			(author) => authorSocialLinks[author.toLowerCase().replaceAll(' ', '')]
+			(author) => authorSocialLinks[author.toLowerCase().replaceAll(' ', '_')]
 		);
 	}
-	console.log(authorInformation, authorLinks);
 </script>
 
 <article style="margin-top: 20px">
