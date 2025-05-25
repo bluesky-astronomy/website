@@ -39,14 +39,14 @@
 
 <p style="margin-top: 50px">Your post should look like this:</p>
 
-<Image src="/assets/signup/make-post.png" style="width: 100%; max-width: 500px" />
+<Image src="/assets/signup/make-post.webp" style="width: 100%; max-width: 500px" />
 
 <p style="margin-top: 50px">
 	Within a couple of minutes, our friendly bot should see the post and reply to it with further
 	instructions:
 </p>
 
-<Image src="/assets/signup/bot-reply.png" style="width: 100%; max-width: 500px;" />
+<Image src="/assets/signup/bot-reply.webp" style="width: 100%; max-width: 500px;" />
 
 <p>
 	The bot will ask you to <a href="https://github.com/bluesky-astronomy/rules"

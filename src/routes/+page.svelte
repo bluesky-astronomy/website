@@ -7,7 +7,7 @@
 <ImageWithText
 	swap
 	fullHeight
-	src="/assets/bluesky-posts/rubin-variables.png"
+	src="/assets/bluesky-posts/rubin-variables.webp"
 	style={imageWithTextStyle}
 >
 	<h1 style="margin-top: 0px; font-size: 40px">
@@ -27,7 +27,7 @@
 
 <ImageWithText
 	fullHeight
-	src="/assets/bluesky-posts/ryan-macdonald-k218b.png"
+	src="/assets/bluesky-posts/ryan-macdonald-k218b.webp"
 	style={imageWithTextStyle}
 >
 	<h1 style="margin-top: 0px; font-size: 40px">Control your scroll.</h1>
@@ -47,7 +47,7 @@
 <ImageWithText
 	swap
 	fullHeight
-	src="/assets/bluesky-posts/skymapsdotcom-milky-way.png"
+	src="/assets/bluesky-posts/skymapsdotcom-milky-way.webp"
 	style={imageWithTextStyle}
 >
 	<h1 style="margin-top: 0px; font-size: 40px">Reach your audience.</h1>
@@ -66,7 +66,7 @@
 
 <ImageWithText
 	fullHeight
-	src="/assets/bluesky-posts/sky-and-telescope.png"
+	src="/assets/bluesky-posts/sky-and-telescope.webp"
 	style={imageWithTextStyle}
 >
 	<h1 style="margin-top: 0px; font-size: 40px">

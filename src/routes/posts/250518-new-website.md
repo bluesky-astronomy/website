@@ -7,8 +7,8 @@ authors: ['Emily Hunt']
 tags: ['News', 'Branding', 'Announcements']
 categories: ['development-news']
 description: "We just updated our website!"
-thumbnail: '/assets/posts/250518-new-website/thumbnail.png'
-image: '/assets/posts/250518-new-website/header.png'
+thumbnail: '/assets/posts/250518-new-website/thumbnail.webp'
+image: '/assets/posts/250518-new-website/header.webp'
 ---
 
 **We're delighted that, as of today, we've updated our website and naming for the project.**
