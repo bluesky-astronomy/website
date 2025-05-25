@@ -16,6 +16,7 @@ export async function getFeedList() {
 
 	Object.keys(json).forEach((key) => {
 		// Edge case where some feeds don't come as an object
+		// Todo: backend should be improved here
 		if (json[key] === null) {
 			json[key] = new Object();
 			json[key].emoji = new Array();
@@ -24,4 +25,20 @@ export async function getFeedList() {
 	});
 
 	return json;
+}
+
+export async function getFeedStatsByMonth(feed) {
+	if (feed === undefined) {
+		feed = 'all';
+	}
+	const response = await fetch(
+		`${flaskEndpoint}/api/app.getFeedStats?` +
+			new URLSearchParams({
+				feed: feed,
+				group_by_year: true,
+				group_by_month: true
+			})
+	);
+	const json = await response.json();
+	return Object.values(json.stats).filter((stats) => stats.feed === feed);
 }
