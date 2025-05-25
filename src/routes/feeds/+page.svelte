@@ -1,7 +1,7 @@
 <script>
-	import { getFeedInfo } from '$lib/js/cache.svelte';
-	import { onMount } from 'svelte';
 	import FeedCard from '$lib/components/feeds/FeedCard.svelte';
+	import { onMount } from 'svelte';
+	import { getFeedInfo } from '$lib/js/cache.svelte';
 
 	let feeds = undefined;
 	let sortedFeeds = new Array();

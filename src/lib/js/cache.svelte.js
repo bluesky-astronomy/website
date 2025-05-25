@@ -11,10 +11,7 @@ export async function getFeedInfo() {
 	}
 
 	// Perform fetches
-	// Todo: do these in parallel
-	const flaskInfo = await getFeedList();
-	const blueskyInfo = await getActorFeeds();
-	console.log("QUERY")
+	const [flaskInfo, blueskyInfo] = await Promise.all([getFeedList(), getActorFeeds()]);
 
 	// Combine into two arrays & set various data
 	blueskyInfo.data.feeds.forEach((feed) => {

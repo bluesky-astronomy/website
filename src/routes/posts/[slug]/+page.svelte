@@ -2,7 +2,7 @@
 <script>
 	import Image from '$lib/blocks/Image.svelte';
 	import { siteTitle, authorSocialLinks } from '$lib/config.js';
-	import { formatDate } from '$lib/js/dates';
+	import { formatDate } from '$lib/js/format.js';
 	let { data } = $props();
 
 	const metadata = data.metadata;
@@ -28,10 +28,9 @@
 	if (data.metadata.authors) {
 		authorInformation = data.metadata.authors;
 		authorLinks = authorInformation.map(
-			(author) => authorSocialLinks[author.toLowerCase().replaceAll(' ', '')]
+			(author) => authorSocialLinks[author.toLowerCase().replaceAll(' ', '_')]
 		);
 	}
-	console.log(authorInformation, authorLinks);
 </script>
 
 <article style="margin-top: 20px">

@@ -1,6 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import { getFeedInfo } from '$lib/js/cache.svelte';
+	import { numberFormatter } from '$lib/js/format';
 	let { feed } = $props();
 
 	let feedInfo = $state(0);
@@ -26,7 +27,7 @@
                 {feedInfo.description.split('.')[0].split('!')[0]}.
             </p>
             <p style="margin-top: 5px; color: var(--color-grey)">
-                Liked by {feedInfo.likeCount} users
+                Liked by {numberFormatter.format(feedInfo.likeCount)} users
             </p>
         {:else}
             <p>Loading...</p>
