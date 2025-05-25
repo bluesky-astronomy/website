@@ -22,4 +22,7 @@
 	{#each sortedFeeds as feed}
 		<FeedCard feed={feed.feed} />
 	{/each}
+
+{:else}
+	<em>Loading...</em>
 {/if}
