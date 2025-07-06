@@ -1,15 +1,13 @@
-/* Functions for interacting with our Flask API endpoint. */
+import { getActorFeeds } from './bsky-api';
 
-import { dev } from '$app/environment';
+export const prodServerEndpoint = 'https://feed-all.astronomy.blue';
+export const devServerEndpoint = 'http://127.0.0.1:8000';
 
-// Set endpoint - different on dev or not dev
-let flaskEndpoint = 'https://feed-all.astronomy.blue';
-// flaskEndpoint = 'http://127.0.0.1:8000';
-if (dev) {
-	flaskEndpoint = 'http://127.0.0.1:8000';
-}
-
-export async function getFeedList() {
+// Fetches the current list of feeds from Bluesky.
+export async function getFeedList(flaskEndpoint) {
+	if (flaskEndpoint === undefined) {
+		flaskEndpoint = prodServerEndpoint;
+	}
 	// const response = await fetch('https://feed-all.astronomy.blue/api/app.getFeedList');
 	const response = await fetch(`${flaskEndpoint}/api/app.getFeedList`);
 	const json = await response.json();
@@ -27,9 +25,52 @@ export async function getFeedList() {
 	return json;
 }
 
-export async function getFeedStatsByMonth(feed) {
+// Runs getFeedList, AND also mixes in any additional Bluesky info.
+// This function is intended for use for pre-caching feed information.
+export async function getFeedListWithBskyInfo(flaskEndpoint) {
+	const [flaskInfo, blueskyInfo] = await Promise.all([getFeedList(), getActorFeeds()]);
+
+	let feedInfo = new Object();
+
+	// Combine into two arrays & set various data
+	// Todo: I think I'd prefer if we used the Flask list instead.
+	blueskyInfo.data.feeds.forEach((feed) => {
+		let id = feed.uri.split('/').at(-1);
+
+		// Todo: Remove this one-off fix for the Astrosky feed
+		if (id === 'astro-all') {
+			id = 'all';
+		}
+
+		// Remove oft-duplicated information
+		delete feed.creator;
+
+		// Only discuss feeds exported by the Flask server
+		const feedURISplit = feed.uri.split('/');
+		const feedURL = `https://bsky.app/profile/${feedURISplit[2]}/feed/${feedURISplit[4]}`;
+		if (flaskInfo[id] !== undefined) {
+			feedInfo[id] = {
+				feed: id,
+				url: feedURL,
+				...flaskInfo[id],
+				...feed
+			};
+		}
+	});
+
+	return feedInfo;
+}
+
+export async function getFeedStatsByMonth(feed, flaskEndpoint) {
 	if (feed === undefined) {
 		feed = 'all';
+	}
+	if (flaskEndpoint === undefined) {
+		flaskEndpoint = prodServerEndpoint;
+		console.log(import.meta.env.DEV)
+		if (import.meta.env.DEV) {
+			flaskEndpoint = devServerEndpoint;
+		}
 	}
 	const response = await fetch(
 		`${flaskEndpoint}/api/app.getFeedStats?` +
