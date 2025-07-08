@@ -13,3 +13,8 @@ export async function getFeedInfo() {
 	feedInfo = feeds;
 	return feedInfo;
 }
+
+export function getFeedInfoSync() {
+	// This function is to be preferred going forwards.
+	return feeds;
+}
