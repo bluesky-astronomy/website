@@ -4,6 +4,7 @@
 	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
 	import { getFeedInfoSync } from '$lib/js/cache.svelte.js';
+	import { siteURL } from '$lib/config.js';
 
 	let { data, children } = $props();
 
@@ -26,8 +27,8 @@
 	<meta name="twitter:title" content="FAQ - The Astrosky Ecosystem" />
 
 	<!-- Set custom social graph image -->
-	<meta property="og:image" content="/social-cards/feeds/{feed}.png" />
-	<meta name="twitter:image" content="/social-cards/feeds/{feed}.png" />
+	<meta property="og:image" content="{siteURL}/social-cards/feeds/{feed}.png" />
+	<meta name="twitter:image" content="{siteURL}/social-cards/feeds/{feed}.png" />
 </svelte:head>
 
 <h1>Frequently Asked Questions</h1>
@@ -124,3 +125,11 @@
 </Accordion.Root>
 
 {@render children()}
+
+<!-- The following is here for compiler reasons to help Svelte find certain links. -->
+<div style="display: none">
+	FYI: the following specific FAQ pages are available:
+	{#each Object.keys(feedInfo) as aFeed}
+		<a href="/faq/{aFeed}">{aFeed}</a>
+	{/each}
+</div>
