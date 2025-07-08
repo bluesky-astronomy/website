@@ -48,6 +48,7 @@
 >
 	<!-- <a href="/" class:current-page={pathIs('/')}>Home</a> -->
 	<a href="/feeds/" class:current-page={pathStartsWith('/feeds')}>Feeds</a>
+	<a href="/faq/" class:current-page={pathStartsWith('/faq')}>FAQ</a>
 	<a href="/blog/" class:current-page={pathStartsWith('/blog')}>News</a>
 	<a href="/about/" class:current-page={pathStartsWith('/about')}>About</a>
 	<a href="https://github.com/bluesky-astronomy"><Icon name="github" /></a>
