@@ -4,7 +4,7 @@ import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
 /** @type {import('mdsvex').MdsvexOptions} */
 const mdsvexOptions = {
-	extensions: ['.md'],
+	extensions: ['.md']
 };
 
 const config = {
@@ -18,7 +18,7 @@ const config = {
 			base: '' // process.argv.includes('dev') ? '' : process.env.BASE_PATH
 		},
 		prerender: {
-			entries: ["*", "/blog/development news/1"]
+			entries: ['*', '/blog/development news/1']
 		}
 	}
 };

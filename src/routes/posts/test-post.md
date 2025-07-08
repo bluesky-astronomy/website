@@ -43,9 +43,9 @@ Just like that!
 
 The final test is how images look.
 
-![An image](/assets/default.webp)
+![First test](/assets/default.webp)
 
-![An image](/assets/default.webp)
+![Second test](/assets/default.webp)
 
 ---
 

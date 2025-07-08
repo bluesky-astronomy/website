@@ -51,6 +51,12 @@
 	});
 </script>
 
+<svelte:head>
+	<!-- Set custom social graph image -->
+	<meta property="og:image" content="/social-cards/feeds/{feed}.png" />
+	<meta name="twitter:image" content="/social-cards/feeds/{feed}.png" />
+</svelte:head>
+
 {#if feedInfo}
 	<!-- TITLE -->
 	<div class="container" style="margin-top: 20px">

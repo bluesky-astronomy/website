@@ -1,3 +1,5 @@
+// Todo: defining icons like this is a crime
+
 import Fa6BrandsBluesky from '~icons/fa6-brands/bluesky';
 import Fa6BrandsTwitter from '~icons/fa6-brands/twitter';
 import Fa6BrandsMastodon from '~icons/fa6-brands/mastodon';
@@ -11,5 +13,6 @@ export const icons = {
 	mastodon: Fa6BrandsMastodon,
 	github: Fa6BrandsGithub,
 	email: MdiEmail,
-	hamburger: MdiHamburgerMenu
+	hamburger: MdiHamburgerMenu,
+	// caret: 
 };
