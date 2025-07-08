@@ -76,7 +76,7 @@ async function writeSocialCards(options) {
 	for (const feed in feedInfo) {
 		const name = `The ${feedInfo[feed].displayName.replaceAll('The ', '').replaceAll('&', 'and')} Feed`;
 		let image = await renderSocialCard(name, undefined, fontData);
-		writeFile(`./static/social-cards/${feed}.png`, image, (error) => {
+		writeFile(`./static/social-cards/feeds/${feed}.png`, image, (error) => {
 			if (error) {
 				throw error;
 			}
