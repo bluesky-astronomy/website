@@ -45,7 +45,7 @@ function APIPreQuery() {
 async function generateSocialCards() {
 	return {
 		name: 'generate-social-cards',
-		buildStart: writeSocialCards
+		buildEnd: writeSocialCards
 	};
 }
 
