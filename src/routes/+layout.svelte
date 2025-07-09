@@ -15,7 +15,7 @@
 	import { siteTitle, siteURL, siteDescription } from '$lib/config.js';
 	let head = $state({});
 	let defaultKeywords = ['Astronomy', 'Machine Learning', 'Space', 'Science', 'Programming'];
-	let defaultImage = '/assets/logo.webp'; // TODO: change
+	let defaultImage = '/social-cards/default.png'; // TODO: change
 
 	function setHead() {
 		// Default settings

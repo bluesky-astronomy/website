@@ -4,7 +4,6 @@
 	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
 	import { getFeedInfoSync } from '$lib/js/cache.svelte.js';
-	import { siteURL } from '$lib/config.js';
 
 	let { data, children } = $props();
 
@@ -18,18 +17,6 @@
 		return string[0].toLowerCase() + string.slice(1);
 	}
 </script>
-
-<svelte:head>
-	<!-- Capitalize the page name -->
-	<title>FAQ - The Astrosky Ecosystem</title>
-	<meta name="title" content="FAQ - The Astrosky Ecosystem" />
-	<meta property="og:title" content="FAQ - The Astrosky Ecosystem" />
-	<meta name="twitter:title" content="FAQ - The Astrosky Ecosystem" />
-
-	<!-- Set custom social graph image -->
-	<meta property="og:image" content="{siteURL}/social-cards/feeds/{feed}.png" />
-	<meta name="twitter:image" content="{siteURL}/social-cards/feeds/{feed}.png" />
-</svelte:head>
 
 <h1>Frequently Asked Questions</h1>
 

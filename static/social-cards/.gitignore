@@ -1,3 +1,0 @@
-# Files to ignore. (in general, social cards shouldn't ever be committed, and are
-# instead generated on the fly.)
-*.png
