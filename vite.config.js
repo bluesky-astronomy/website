@@ -7,7 +7,7 @@ import {
 	devServerEndpoint
 } from './src/lib/js/flask-api';
 import { renderSocialCard } from './src/lib/js/social-card';
-import { writeFile, readFileSync } from 'fs';
+import { writeFileSync, writeFile, readFileSync } from 'fs';
 
 export default defineConfig({
 	plugins: [
@@ -15,38 +15,37 @@ export default defineConfig({
 		Icons({
 			compiler: 'svelte'
 		}),
-		APIPreQuery(),
-		generateSocialCards()
+		// pluginAPIPreQuery(),  // TODO: see if there is a better way to integrate this! It hasn't worked so far though, as it's async.
+		pluginGenerateSocialCards()
 	]
 });
 
-// Pre-queries the feed APIs and saves a copy of the data to a JSON file in /static.
-function APIPreQuery() {
+// Pre-queries the feed APIs and saves a copy of the data to a JSON file.
+function pluginAPIPreQuery() {
+	return {
+		name: 'api-pre-query',
+		buildStart: performAPIPreQuery
+	};
+}
+
+// Generates bespoke social cards for all pages that require one.
+function pluginGenerateSocialCards() {
+	return {
+		name: 'generate-social-cards',
+		buildStart: writeSocialCards
+	};
+}
+
+function performAPIPreQuery(options) {
 	let endpoint = prodServerEndpoint;
 	if (process.env.NODE_ENV === 'development') {
 		endpoint = devServerEndpoint;
 	}
-	return {
-		name: 'api-pre-query',
-		buildStart: (options) => {
-			console.log('APIPreQuery: Fetching current feed list. Mode =', process.env.NODE_ENV);
-			Promise.resolve(getFeedListWithBskyInfo(endpoint)).then((feedInfo) => {
-				feedInfo = { feeds: feedInfo };
-				writeFile('./src/lib/assets/json/feedInfo.json', JSON.stringify(feedInfo), (error) => {
-					if (error) {
-						throw error;
-					}
-				});
-			});
-		}
-	};
-}
-
-async function generateSocialCards() {
-	return {
-		name: 'generate-social-cards',
-		buildEnd: writeSocialCards
-	};
+	console.log('APIPreQuery: Fetching current feed list. Mode =', process.env.NODE_ENV);
+	Promise.resolve(getFeedListWithBskyInfo(endpoint)).then((feedInfo) => {
+		feedInfo = { feeds: feedInfo };
+		writeFileSync('./src/lib/assets/json/feedInfo.json', JSON.stringify(feedInfo));
+	});
 }
 
 async function writeSocialCards(options) {
@@ -75,11 +74,12 @@ async function writeSocialCards(options) {
 	// Render an image for each feed
 	for (const feed in feedInfo) {
 		const name = `The ${feedInfo[feed].displayName.replaceAll('The ', '').replaceAll('&', 'and')} Feed`;
-		let image = await renderSocialCard(name, undefined, fontData);
-		writeFile(`./static/social-cards/feeds/${feed}.png`, image, (error) => {
-			if (error) {
-				throw error;
-			}
+		Promise.resolve(renderSocialCard(name, undefined, fontData)).then((image) => {
+			writeFile(`./static/social-cards/feeds/${feed}.png`, image, (error) => {
+				if (error) {
+					throw error;
+				}
+			});
 		});
 	}
 }
