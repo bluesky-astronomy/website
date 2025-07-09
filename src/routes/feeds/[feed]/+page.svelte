@@ -83,9 +83,10 @@
 		<strong>opt-in.</strong> Your posts will only be able to appear here after
 		<a href="/about/signup">signing up</a>.
 	</p>
-	<p style="margin-bottom: 30px">
+	<p>
 		After that, you can post to the feed by including <strong>{feedCriteria}</strong> in your post.
 	</p>
+	<p style="margin-bottom: 30px">You can also check out the <a href="/faq/{feed}">frequently asked questions page</a> for this feed.</p>
 
 	<!-- STATISTICS -->
 	<Flex>
