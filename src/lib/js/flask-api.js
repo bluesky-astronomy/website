@@ -1,4 +1,4 @@
-import { getActorFeeds } from './bsky-api';
+import { getActorFeeds } from './bsky-api.js';
 
 export const prodServerEndpoint = 'https://feed-all.astronomy.blue';
 export const devServerEndpoint = 'http://127.0.0.1:8000';
@@ -10,8 +10,10 @@ export async function getFeedList(flaskEndpoint) {
 	}
 	// const response = await fetch('https://feed-all.astronomy.blue/api/app.getFeedList');
 	const response = await fetch(`${flaskEndpoint}/api/app.getFeedList`);
+	if (!response.ok) {
+		throw new Error(`Failed to download getFeedList API route. Status: ${response.status}`);
+	}
 	const json = await response.json();
-
 	Object.keys(json).forEach((key) => {
 		// Edge case where some feeds don't come as an object
 		// Todo: backend should be improved here
@@ -21,7 +23,6 @@ export async function getFeedList(flaskEndpoint) {
 			json[key].words = ['All posts from all feeds'];
 		}
 	});
-
 	return json;
 }
 
@@ -67,7 +68,7 @@ export async function getFeedStatsByMonth(feed, flaskEndpoint) {
 	}
 	if (flaskEndpoint === undefined) {
 		flaskEndpoint = prodServerEndpoint;
-		console.log(import.meta.env.DEV)
+		console.log(import.meta.env.DEV);
 		if (import.meta.env.DEV) {
 			flaskEndpoint = devServerEndpoint;
 		}
