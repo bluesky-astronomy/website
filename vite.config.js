@@ -7,7 +7,7 @@ import {
 	devServerEndpoint
 } from './src/lib/js/flask-api';
 import { renderSocialCard } from './src/lib/js/social-card';
-import { writeFileSync, writeFile, readFileSync } from 'fs';
+import { writeFileSync, writeFile, readFileSync, readFile, existsSync } from 'fs';
 
 export default defineConfig({
 	plugins: [
@@ -72,9 +72,18 @@ async function writeSocialCards(options) {
 	const feedInfo = JSON.parse(readFileSync('./src/lib/assets/json/feedInfo.json')).feeds;
 
 	// Render an image for each feed
+	const defaultImage = readImageBase64('./static/social-cards/default.png');
 	for (const feed in feedInfo) {
 		const name = `The ${feedInfo[feed].displayName.replaceAll('The ', '').replaceAll('&', 'and')} Feed`;
-		Promise.resolve(renderSocialCard(name, undefined, fontData)).then((image) => {
+		let image = defaultImage;
+		const imagePath = `./static/assets/feed-headers/${feed}.png`;
+		if (existsSync(imagePath)) {
+			image = readImageBase64(imagePath);
+		}
+
+		// const image = 'url(https://cdn.esahubble.org/archives/images/screen/heic0206a.jpg)';
+
+		Promise.resolve(renderSocialCard(name, image, fontData)).then((image) => {
 			writeFile(`./static/social-cards/feeds/${feed}.png`, image, (error) => {
 				if (error) {
 					throw error;
@@ -82,4 +91,8 @@ async function writeSocialCards(options) {
 			});
 		});
 	}
+}
+
+function readImageBase64(image) {
+	return 'data:image/png;base64,' + readFileSync(image).toString('base64');
 }

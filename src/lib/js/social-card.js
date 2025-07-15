@@ -34,17 +34,25 @@ function getHTML(text, image) {
     // "Svelte->HTML String->JSX" is a bit of a pain, so instead we just go 
     // "HTML String -> JSX"...
     // Todo improve this piece of crap, preferably with a Svelte component that gets converted to HTML (see earlier commits for examples using svelte render)
+// 	<div
+// 	style="
+//     display: flex;
+//     height: ${imageHeight}%; 
+//     width: 100%; 
+//     background-color: black;
+//     background-image: url("${image}");
+//     background-size: cover;
+//     "
+// ></div>
 	return toReactNode`
-<div
+<img
+	src="${image}"
 	style="
-    display: flex;
     height: ${imageHeight}%; 
-    width: 100%; 
-    background-color: black;
-    background-image: url(https://cdn.esahubble.org/archives/images/screen/heic0206a.jpg);
-    background-size: cover;
+    width: 100%;
+	object-fit: cover;
     "
-></div>
+/>
 
 <div
 	style="
@@ -74,10 +82,10 @@ function getHTML(text, image) {
 
 	<h1
 		style="
-    font-size: ${fontSize}px; 
-    padding: 0px;
-    margin: 0 0 8px 0;
-    "
+    	font-size: ${fontSize}px; 
+    	padding: 0px;
+    	margin: 0 0 8px 0;
+		"
 	>
 		${text}
 	</h1>
