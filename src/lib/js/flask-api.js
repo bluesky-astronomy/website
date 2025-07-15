@@ -68,8 +68,8 @@ export async function getFeedStatsByMonth(feed, flaskEndpoint) {
 	}
 	if (flaskEndpoint === undefined) {
 		flaskEndpoint = prodServerEndpoint;
-		console.log(import.meta.env.DEV);
 		if (import.meta.env.DEV) {
+			console.log("Flask API: using dev endpoint");
 			flaskEndpoint = devServerEndpoint;
 		}
 	}
