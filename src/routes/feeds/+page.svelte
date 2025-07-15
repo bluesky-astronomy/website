@@ -1,15 +1,12 @@
 <script>
 	import FeedCard from '$lib/components/feeds/FeedCard.svelte';
-	import { onMount } from 'svelte';
-	import { getFeedInfo } from '$lib/js/cache.svelte';
+	import { getFeedInfoSync } from '$lib/js/cache.svelte';
 
-	let feeds = undefined;
-	let sortedFeeds = new Array();
+	// let feeds = undefined;
+	// let sortedFeeds = new Array();
+	let feeds = getFeedInfoSync();
+	let sortedFeeds = Object.values(feeds).sort((a, b) => b.likeCount - a.likeCount);
 
-	onMount(async () => {
-		feeds = await getFeedInfo();
-		sortedFeeds = Object.values(feeds).sort((a, b) => b.likeCount - a.likeCount);
-	});
 </script>
 
 <h1>All of our feeds</h1>
@@ -18,11 +15,11 @@
 
 <p>Click on the links below to find out more.</p>
 
-{#if sortedFeeds}
-	{#each sortedFeeds as feed}
-		<FeedCard feed={feed.feed} />
-	{/each}
+<!-- {#if sortedFeeds} -->
+{#each sortedFeeds as feed}
+	<FeedCard feed={feed.feed} />
+{/each}
 
-{:else}
+<!-- {:else}
 	<em>Loading...</em>
-{/if}
+{/if} -->

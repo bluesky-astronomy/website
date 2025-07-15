@@ -6,7 +6,7 @@
 	import Flex from '$lib/blocks/Flex.svelte';
 	import { onMount } from 'svelte';
 	import { numberFormatter } from '$lib/js/format';
-	import { getFeedInfo } from '$lib/js/cache.svelte';
+	import { getFeedInfoSync } from '$lib/js/cache.svelte';
 	import { getFeedStatsByMonth } from '$lib/js/flask-api';
 
 	let { data } = $props();
@@ -15,30 +15,24 @@
 	const cardWidth = 'min(300px, 80vw)';
 
 	// All the feed info we grab from the backends
-	let feedInfo = $state(0);
-	let feedName = $state('');
-	let feedCriteria = $state('');
-	let feedURL = $state('/');
+	// The basics
+	const feedInfo = getFeedInfoSync()[feed];
+	const feedName = feedInfo.displayName.replace('The', '');
 
-	// All the feed statistics stuff
+	// Precalculate criteria to post to the feed
+	const feedCriteriaArray = feedInfo.emoji.concat(feedInfo.words);
+	feedCriteriaArray[feedCriteriaArray.length - 1] =
+		'or ' + feedCriteriaArray[feedCriteriaArray.length - 1];
+	let feedCriteria = feedCriteriaArray.join(feedCriteriaArray.length > 2 ? ', ' : ' ');
+
+	// Get the feed URI
+	const feedURISplit = feedInfo.uri.split('/');
+	let feedURL = `https://bsky.app/profile/${feedURISplit[2]}/feed/${feedURISplit[4]}`;
+
+	// All the feed statistics stuff comes last: has to be queried dynamically
 	let viewsLastMonth = $state(-1);
-	const currentMonthNumber = new Date().getMonth() + 1;
 
 	onMount(async () => {
-		// Feed information
-		const allFeedInfo = await getFeedInfo();
-		feedInfo = allFeedInfo[feed];
-
-		// Setup some neater things about the feed
-		feedName = feedInfo.displayName.replace('The', '');
-		const feedCriteriaArray = feedInfo.emoji.concat(feedInfo.words);
-		feedCriteriaArray[feedCriteriaArray.length - 1] =
-			'or ' + feedCriteriaArray[feedCriteriaArray.length - 1];
-		feedCriteria = feedCriteriaArray.join(feedCriteriaArray.length > 2 ? ', ' : ' ');
-
-		const feedURISplit = feedInfo.uri.split('/');
-		feedURL = `https://bsky.app/profile/${feedURISplit[2]}/feed/${feedURISplit[4]}`;
-
 		// Feed request statistics
 		const feedStats = await getFeedStatsByMonth(feed);
 		const oneMonthAgo = new Date();
@@ -51,57 +45,54 @@
 	});
 </script>
 
-{#if feedInfo}
-	<!-- TITLE -->
-	<div class="container" style="margin-top: 20px">
-		<img class="feed-avatar" src={feedInfo.avatar} alt="{feedInfo.displayName}'s avatar" />
-		<div class="social-logo">
-			<h1>The {feedName} Feed</h1>
-			<p
-				style="margin-top: -5px; margin-left: 5px; margin-bottom: 0px; padding: 0px; font-size: 20px"
-			>
-				<a href={feedURL} target="_blank">
-					<!-- <Icon name="bluesky" style="height: 20px;" />  -->
-					View on Bluesky
-				</a>
-			</p>
-		</div>
+<!-- TITLE -->
+<div class="container" style="margin-top: 20px">
+	<img class="feed-avatar" src={feedInfo.avatar} alt="{feedInfo.displayName}'s avatar" />
+	<div class="social-logo">
+		<h1>The {feedName} Feed</h1>
+		<p
+			style="margin-top: -5px; margin-left: 5px; margin-bottom: 0px; padding: 0px; font-size: 20px"
+		>
+			<a href={feedURL} target="_blank">
+				<!-- <Icon name="bluesky" style="height: 20px;" />  -->
+				View on Bluesky
+			</a>
+		</p>
 	</div>
+</div>
 
-	<!-- ABOUT -->
-	<p><strong>{feedInfo.description.split('.')[0].split('!')[0]}.</strong></p>
+<!-- ABOUT -->
+<p><strong>{feedInfo.description.split('.')[0].split('!')[0]}.</strong></p>
 
-	<!-- INSTRUCTIONS -->
-	<p>
-		Like all of our feeds, the {feedName} feed is
-		<strong>opt-in.</strong> Your posts will only be able to appear here after
-		<a href="/about/signup">signing up</a>.
-	</p>
-	<p>
-		After that, you can post to the feed by including <strong>{feedCriteria}</strong> in your post.
-	</p>
-	<p style="margin-bottom: 30px">You can also check out the <a href="/faq/{feed}">frequently asked questions page</a> for this feed.</p>
+<!-- INSTRUCTIONS -->
+<p>
+	Like all of our feeds, the {feedName} feed is
+	<strong>opt-in.</strong> Your posts will only be able to appear here after
+	<a href="/about/signup">signing up</a>.
+</p>
+<p>
+	After that, you can post to the feed by including <strong>{feedCriteria}</strong> in your post.
+</p>
+<p style="margin-bottom: 30px">
+	You can also check out the <a href="/faq/{feed}">frequently asked questions page</a> for this feed.
+</p>
 
-	<!-- STATISTICS -->
-	<Flex>
-		<Card width={cardWidth}>
-			<p class="card-text">❤️ {numberFormatter.format(feedInfo.likeCount)} likes</p>
-		</Card>
-		<Card width={cardWidth}>
-			<p class="card-text">
-				🔎
-				{#if viewsLastMonth >= 0}
-					{numberFormatter.format(viewsLastMonth)}
-				{:else}
-					(loading)
-				{/if}
-				views last month
-			</p>
-		</Card>
-	</Flex>
-{:else}
-	<p>Loading...</p>
-{/if}
+<!-- STATISTICS -->
+<Flex>
+	<Card width={cardWidth}>
+		<p class="card-text">❤️ {numberFormatter.format(feedInfo.likeCount)} likes</p>
+	</Card>
+	<Card width={cardWidth}>
+		<p class="card-text">
+			🔎
+			{#if viewsLastMonth >= 0}
+				{numberFormatter.format(viewsLastMonth)} views last month
+			{:else}
+				(loading...)
+			{/if}
+		</p>
+	</Card>
+</Flex>
 
 <p style="margin-top: 50px; font-size: 22px"><a href="/feeds/">↻ Return to feed list</a></p>
 
