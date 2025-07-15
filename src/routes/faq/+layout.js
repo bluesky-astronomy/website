@@ -14,8 +14,8 @@ export async function load({ params }) {
 	return {
 		feed: feed,
 		pageMeta: {
-			title: `The ${feedDisplayName} Feed - FAQ`,
-			image: `/social-cards/feeds/${feed}.png`
+			title: `FAQ: The ${feedDisplayName} Feed`,
+			image: `/social-cards/feeds/${feed}.png`,
 		}
 	};
 }
