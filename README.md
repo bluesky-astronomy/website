@@ -8,7 +8,7 @@ This repo contains the source for [The Astrosky Ecosystem's website.](https://as
 
 ## Image credits
 
-Throughout this repo, a number of free stock photos from [pexels](https://www.pexels.com) are used. They're attribution-free, but we'll keep a list of them here anyway...
+Throughout this repo, a number of free stock photos from [pexels](https://www.pexels.com) and other sources are used. They're attribution-free, but we'll keep a list of them here anyway:
 
 
 `static/assets/feed-headers/all.png`: Photo by Abdullah Dawud: https://www.pexels.com/photo/high-contrast-full-moon-against-dark-sky-31112231/
@@ -21,7 +21,7 @@ Throughout this repo, a number of free stock photos from [pexels](https://www.pe
 
 `static/assets/feed-headers/education.png`: Photo by Vinícius Vieira ft: https://www.pexels.com/photo/vintage-celestial-globe-with-constellation-mapping-29847626/
 
-`static/assets/feed-headers/exoplanets.png`:
+`static/assets/feed-headers/exoplanets.png`: Created from assets in [OpenSpace](https://www.openspaceproject.com/)
 
 `static/assets/feed-headers/extragalactic.png`: @ltno2.bsky.social https://bsky.app/profile/ltno2.bsky.social
 
@@ -31,7 +31,7 @@ Throughout this repo, a number of free stock photos from [pexels](https://www.pe
 
 `static/assets/feed-headers/instrumentation.png`: Photo by Kelly: https://www.pexels.com/photo/observatory-during-nighttime-2928587/
 
-`static/assets/feed-headers/methods.png`:
+`static/assets/feed-headers/methods.png`: Created from code in [ocelot](github.com/emilyhunt/ocelot) (Emily Hunt)
 
 `static/assets/feed-headers/milkyway.png`: Photo by Philippe Donn: https://www.pexels.com/photo/milky-way-illustration-1169754/
 
