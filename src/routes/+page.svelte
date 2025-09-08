@@ -1,14 +1,14 @@
 <script>
 	import ImageWithText from '../lib/blocks/ImageWithText.svelte';
 
-	const imageWithTextStyle = 'width: 100%; max-width: 400px';
+	const imageWithTextStyle = 'width: 100%; max-width: 400px;';
 </script>
 
 <ImageWithText
 	swap
-	fullHeight
 	src="/assets/bluesky-posts/rubin-variables.webp"
 	style={imageWithTextStyle}
+	margin="100px"
 >
 	<h1 style="margin-top: 0px; font-size: 40px">
 		Welcome to the future of outreach and discussion.
@@ -26,9 +26,9 @@
 </ImageWithText>
 
 <ImageWithText
-	fullHeight
 	src="/assets/bluesky-posts/ryan-macdonald-k218b.webp"
 	style={imageWithTextStyle}
+	margin="100px"
 >
 	<h1 style="margin-top: 0px; font-size: 40px">Control your scroll.</h1>
 
@@ -46,9 +46,9 @@
 
 <ImageWithText
 	swap
-	fullHeight
 	src="/assets/bluesky-posts/skymapsdotcom-milky-way.webp"
 	style={imageWithTextStyle}
+	margin="100px"
 >
 	<h1 style="margin-top: 0px; font-size: 40px">Reach your audience.</h1>
 
@@ -65,9 +65,9 @@
 </ImageWithText>
 
 <ImageWithText
-	fullHeight
 	src="/assets/bluesky-posts/sky-and-telescope.webp"
 	style={imageWithTextStyle}
+	margin="100px"
 >
 	<h1 style="margin-top: 0px; font-size: 40px">
 		Independent.<br />Open source.<br />Free forever.
