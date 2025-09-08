@@ -3,6 +3,7 @@
 	import { icons } from '$lib/icons.js';
 	import { getPosts } from '$lib/js/posts.js';
 	import Icon from '$lib/blocks/Icon.svelte';
+	import OpenCollectiveDonate from './OpenCollectiveDonate.svelte';
 
 	const year = new Date().getFullYear();
 
@@ -14,7 +15,7 @@
 
 <footer>
 	<div class="footer">
-		<div class="footer-item">
+		<div class="footer-item" style="margin-bottom: 20px">
 			<h6>Get in touch:</h6>
 			<div class="socials-container">
 				<div class="socials">
@@ -28,8 +29,13 @@
 				</div>
 			</div>
 			<!-- <p style="margin-top: 35px; margin-bottom: 0px"><a href="https://github.com/bluesky-astronomy/website">Website source code</a></p> -->
-			<p style="margin-top: 5px; margin-bottom: 25px">© The Astrosky Ecosystem {year}</p>
-			
+			<p style="margin-top: 5px; margin-bottom: 5px">© The Astrosky Ecosystem {year}</p>
+			<p style="margin-top: 0px; margin-bottom: 5px">
+				Support us on <a href="https://opencollective.com/the-astrosky-ecosystem" target="_blank"
+					>Open Collective</a
+				>
+			</p>
+			<!-- <OpenCollectiveDonate height=100/> -->
 		</div>
 		<div class="footer-item">
 			<h6>Recent updates:</h6>
@@ -81,13 +87,12 @@
 		margin-bottom: 10px;
 	}
 
-	@media only screen and (min-width : 1000px){
-
-    }
-    /* Tablets */
-    @media screen and (min-width: 801px) and (max-width: 999px) {
+	@media only screen and (min-width: 1000px) {
+	}
+	/* Tablets */
+	@media screen and (min-width: 801px) and (max-width: 999px) {
 		.social-logo {
-			font-size: 35px
+			font-size: 35px;
 		}
 		.socials {
 			gap: 28px;
@@ -96,14 +101,14 @@
 			flex: 1 0 auto;
 			max-width: min(250px, 85vw);
 		}
-    }
-    /* Phones */
-    @media screen and (max-width: 800px) {
+	}
+	/* Phones */
+	@media screen and (max-width: 800px) {
 		.socials {
 			justify-content: center;
 		}
 		.social-logo {
-			font-size: 35px
+			font-size: 35px;
 		}
 		.footer-item {
 			text-align: center;
@@ -118,5 +123,5 @@
 		h6 {
 			margin-top: 10px;
 		}
-    }
+	}
 </style>
