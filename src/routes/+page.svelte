@@ -88,5 +88,5 @@
 <h2>Find out more</h2>
 
 <ul>
-	<li><a href="http://localhost:5173/feeds">Check out our feeds</a></li>
+	<li><a href="/feeds">Check out our feeds</a></li>
 </ul>
