@@ -11,17 +11,20 @@ thumbnail: '/assets/feed-headers/methods.png'
 image: '/assets/feed-headers/methods.png'
 ---
 
-
 For over two years, _The Astrosky Ecosystem_ has been building social tools for the astronomy community. For the past year, we've had multiple developers working on the project. **But we're looking to expand our team once again!**
 
-Most of our work over the last year has been behind the scenes - like improving our hosting setup, developer experience, and data collection. We've also done things that are more administrative but are still huge milestones, like achieving [financial sustainability](https://opencollective.com/the-astrosky-ecosystem) through Open Collective. 
+Most of our work over the last year has been behind the scenes - like improving our hosting setup, developer experience, and data collection. We've also done things that are more administrative but are still huge milestones, like achieving [financial sustainability](https://opencollective.com/the-astrosky-ecosystem) through Open Collective.
 
 In the near future, we'd like to start hosting user accounts (i.e. PDS hosting), improve the signup flow for the feeds, improve the moderation experience with a web-based UI, and even investigate ways to make the feed experience customizable for different users. There's a lot that we want to do, and we'd love to get more help across a full range of projects - from frontend work to data science and devops!
 
-
 ## How we work
 
+
 Our team is a diverse group of astronomers, astronomy students, and professional software developers/data scientists. We meet every two weeks to have a catch-up and discuss progress.
+
+![](/assets/posts/251105-expand-team/dev_team_nov_2025.webp)
+<div style="text-align: center; margin-top: -5px"><p style="font-size: 17px"><em>Pic: A little selfie from a recent team meeting</em></p></div>
+
 
 **If you're an astronomer or astronomy student**, joining our team is a fantastic way to learn about professional software development tools. We collaborate extensively with git and GitHub, and use the latest advances in Python tooling to run our project.
 
@@ -37,11 +40,11 @@ We'd be happy to answer any questions you might have - feel free to [DM Emily on
 
 Taking advantage of the recent addition of [OAuth Scopes](https://github.com/bluesky-social/atproto/discussions/4118) to ATProtocol/Bluesky, we'd love to migrate some of our ageing solutions (like the purely in-app [Astrobot](https://bsky.app/profile/bot.astronomy.blue) for user signup) to new web-based user interfaces. Frontend skills are the most lacking on our current team, and it would be a huge help to us to find some dedicated frontend devs who could help us out. Projects would include:
 
-* Implementing OAuth login, tied in to our Flask backend server, for a new, multi-purpose webapp for the feeds & wider ecosystem
-* Creating a new, simplified feed signup flow in the new webapp
-* Creating a new moderation UI in the new webapp
-* Improving our existing website's design and content
-* Adding experimental options to the new webapp to allow users to have fine-grained control of their feed experience
+- Implementing OAuth login, tied in to our Flask backend server, for a new, multi-purpose webapp for the feeds & wider ecosystem
+- Creating a new, simplified feed signup flow in the new webapp
+- Creating a new moderation UI in the new webapp
+- Improving our existing website's design and content
+- Adding experimental options to the new webapp to allow users to have fine-grained control of their feed experience
 
 So far, our frontend work has been with **Svelte/Sveltekit** (such as this website). Ideally, we'd like to stick to using Svelte in the future. Experience with Svelte isn't necessary (we think it's easy to learn!), but you should have frontend experience already.
 
@@ -65,11 +68,11 @@ Eventually, this could also expand into automatic classification of posts into o
 
 All of this would require classifying text, such as with neural networks, transformers, or unsupervised techniques - but nobody on our team has really done text classification before, and it's an area we could benefit from gaining expertise in. You could work on projects like:
 
-* Classifying posts by type
-* Classifying users based on what they post about and/or their interests
-* Improving the experience of the >10,000 people who read the feeds each month
-* Automated moderation tooling to help our mods
-* A/B testing of user retention to see what does or doesn't work
+- Classifying posts by type
+- Classifying users based on what they post about and/or their interests
+- Improving the experience of the >10,000 people who read the feeds each month
+- Automated moderation tooling to help our mods
+- A/B testing of user retention to see what does or doesn't work
 
 You can apply here with [this short form](https://docs.google.com/forms/d/e/1FAIpQLScyWrWrQDfP1O5KbeLZWdYjPnIq8-1rpQQiMtXKNzMoHMSWVg/viewform?usp=publish-editor). We'll take applications on a rolling basis, but please apply by **Sunday 16th November at 23:59 UTC** for full consideration.
 
@@ -77,13 +80,13 @@ You can apply here with [this short form](https://docs.google.com/forms/d/e/1FAI
 
 ## 🚒 Devops
 
-Finally, we would also be open to getting some devops help. To keep costs down and independence high, we host all of our services on bare metal hosting. This saves us money long-term, and prevents us from being locked in to any one cloud provider; but unfortunately, it's also something that we've had to learn as we go along, and reading up about devops stuff is a big timesink. 
+Finally, we would also be open to getting some devops help. To keep costs down and independence high, we host all of our services on bare metal hosting. This saves us money long-term, and prevents us from being locked in to any one cloud provider; but unfortunately, it's also something that we've had to learn as we go along, and reading up about devops stuff is a big timesink.
 
 If you're passionate about devops and want to help an open-source project keep up high backup, development, and security standards, then we'd love to hear from you! You could work on things like...
 
-* Improving our uptime monitoring, such as with live testing or automated alerts piped to our Discord dev server
-* Helping us prepare to start hosting user data, including by adding S3-format blob storage to our repertoire of rented services
-* Improving the speed and resilience of our code update rollouts
+- Improving our uptime monitoring, such as with live testing or automated alerts piped to our Discord dev server
+- Helping us prepare to start hosting user data, including by adding S3-format blob storage to our repertoire of rented services
+- Improving the speed and resilience of our code update rollouts
 
 You can apply here with [this short form](https://docs.google.com/forms/d/e/1FAIpQLScyWrWrQDfP1O5KbeLZWdYjPnIq8-1rpQQiMtXKNzMoHMSWVg/viewform?usp=publish-editor). We'll take applications on a rolling basis, but please apply by **Sunday 16th November at 23:59 UTC** for full consideration.
 
