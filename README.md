@@ -5,6 +5,8 @@
 
 This repo contains the source for [The Astrosky Ecosystem's website.](https://astrosky.eco)
 
+Instructions for how to develop it locally can be found in [our development guide.](https://github.com/bluesky-astronomy/development-guide#svelte-projects-for-now-just-the-website)
+
 
 ## Image credits
 
