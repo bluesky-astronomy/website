@@ -88,5 +88,8 @@
 <h2>Find out more</h2>
 
 <ul>
-	<li><a href="/feeds">Check out our feeds</a></li>
+	<li><a href="/feeds">Check out our feeds.</a></li>
+	<li><a href="/faq">Read the frequently asked questions.</a></li>
+	<li><a href="/blog">See our latest news.</a></li>
+	<li><a href="/about">Learn more about us.</a></li>
 </ul>
